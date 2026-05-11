@@ -1,0 +1,61 @@
+@use '../../../../styles/abstracts' as *;
+
+.section {
+  @include rule-bottom;
+  padding-block: 6rem;
+}
+
+.title {
+  margin-top: 1rem;
+  max-width: 48rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.accent { color: var(--color-primary); }
+
+.list {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--color-rule);
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+  @include respond-to(lg) { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-rule);
+  padding: 2rem 0.5rem;
+  transition: background-color 150ms ease;
+
+  @include respond-to(lg) { padding-inline: 1.5rem; }
+
+  &:hover {
+    background-color: var(--color-surface);
+
+    .arrow { color: var(--color-primary); }
+  }
+}
+
+.itemTitle {
+  margin-top: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.itemDesc {
+  margin-top: 0.5rem;
+  max-width: 20rem;
+  font-size: 0.875rem;
+  color: var(--color-graphite-soft);
+}
+
+.arrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-graphite-soft);
+  transition: color 150ms ease;
+}

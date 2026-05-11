@@ -1,0 +1,23 @@
+// Design tokens as CSS custom properties
+// Source: Swiss/Industrial palette from perfostand-display-crafted
+:root {
+  // --- Colors ---
+  --color-bg:           oklch(1 0 0);             // #ffffff
+  --color-fg:           oklch(0.22 0.01 250);     // dark graphite
+  --color-graphite:     oklch(0.22 0.01 250);     // headings, logo
+  --color-graphite-soft: oklch(0.38 0.01 250);   // body text, muted
+  --color-surface:      oklch(0.985 0.002 250);   // light section bg
+  --color-surface-alt:  oklch(0.955 0.003 250);   // card bg, placeholders
+  --color-rule:         oklch(0.9 0.004 250);     // borders, dividers
+  --color-primary:      oklch(0.68 0.19 45);      // orange accent
+  --color-primary-fg:   oklch(1 0 0);             // text on primary
+  --color-destructive:  oklch(0.55 0.22 27);      // error red
+
+  // --- Typography ---
+  --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  // --- Misc ---
+  --radius: 0.25rem;
+}

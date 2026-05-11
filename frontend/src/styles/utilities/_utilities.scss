@@ -1,0 +1,63 @@
+@use '../abstracts' as *;
+
+// Layout
+.container {
+  @include container;
+}
+
+// Section rules
+.rule-top    { @include rule-top; }
+.rule-bottom { @include rule-bottom; }
+
+// Eyebrow label — monospace, small caps, tracked
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-graphite-soft);
+  display: block;
+}
+
+// Numbered badge — used for item counters, meta info
+.num-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--color-graphite-soft);
+}
+
+// Placeholder surface — hatched pattern for image slots
+.placeholder-surface {
+  background-color: var(--color-surface-alt);
+  background-image:
+    linear-gradient(
+      135deg,
+      transparent 49.5%,
+      color-mix(in oklab, var(--color-graphite) 6%, transparent) 49.5% 50.5%,
+      transparent 50.5%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 49.5%,
+      color-mix(in oklab, var(--color-graphite) 6%, transparent) 49.5% 50.5%,
+      transparent 50.5%
+    );
+  background-size: 22px 22px;
+}
+
+// Grid background — subtle grid lines
+.grid-bg {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-graphite) 5%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-graphite) 5%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 56px 56px;
+}
