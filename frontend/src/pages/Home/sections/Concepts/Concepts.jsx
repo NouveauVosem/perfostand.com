@@ -1,7 +1,8 @@
+import imgC01 from '../../../../assets/concepts/concept-c01.jpg'
 import styles from './Concepts.module.scss'
 
 const CONCEPTS = [
-  { tag: 'C-01', title: 'Power Tools',         desc: 'Heavy-duty pegboard with reinforced hooks and locked display units.' },
+  { tag: 'C-01', title: 'Power Tools',         desc: 'Heavy-duty pegboard with reinforced hooks and locked display units.', img: imgC01 },
   { tag: 'C-02', title: 'Paint Products',       desc: 'Tiered shelving with color-sample integration and branding topper.' },
   { tag: 'C-03', title: 'Gardening Tools',      desc: 'Tall-format racks with handle hooks and seasonal endcaps.' },
   { tag: 'C-04', title: 'Batteries & Power',    desc: 'Compact counter units with secure dispensers and POS branding.' },
@@ -33,7 +34,10 @@ export default function Concepts() {
                 <span className="num-badge">{c.tag}</span>
                 <span className={styles.cardRef}>Reference →</span>
               </div>
-              <div className={`placeholder-surface ${styles.cardImage}`} />
+              {c.img
+                ? <img src={c.img} alt={c.title} className={styles.cardImage} />
+                : <div className={`placeholder-surface ${styles.cardImage}`} />
+              }
               <h3 className={styles.cardTitle}>{c.title}</h3>
               <p className={styles.cardDesc}>{c.desc}</p>
             </article>
