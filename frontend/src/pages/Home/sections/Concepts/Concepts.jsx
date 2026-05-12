@@ -1,13 +1,18 @@
 import imgC01 from '../../../../assets/concepts/concept-c01.jpg'
+import imgC02 from '../../../../assets/concepts/concept-c02.jpg'
+import imgC03 from '../../../../assets/concepts/concept-c03.jpg'
+import imgC04 from '../../../../assets/concepts/concept-c04.jpg'
+import imgC05 from '../../../../assets/concepts/concept-c05.jpg'
+import imgC06 from '../../../../assets/concepts/concept-c06.jpg'
 import styles from './Concepts.module.scss'
 
 const CONCEPTS = [
   { tag: 'C-01', title: 'Power Tools',         desc: 'Heavy-duty pegboard with reinforced hooks and locked display units.', img: imgC01 },
-  { tag: 'C-02', title: 'Paint Products',       desc: 'Tiered shelving with color-sample integration and branding topper.' },
-  { tag: 'C-03', title: 'Gardening Tools',      desc: 'Tall-format racks with handle hooks and seasonal endcaps.' },
-  { tag: 'C-04', title: 'Batteries & Power',    desc: 'Compact counter units with secure dispensers and POS branding.' },
-  { tag: 'C-05', title: 'Automotive Accessories', desc: 'Modular bays for fluids, tools, and hanging consumables.' },
-  { tag: 'C-06', title: 'Hardware & Fasteners', desc: 'High-density bin systems with dividers and printed indexing.' },
+  { tag: 'C-02', title: 'Paint Products',       desc: 'Tiered shelving with color-sample integration and branding topper.', img: imgC02 },
+  { tag: 'C-03', title: 'Gardening Tools',      desc: 'Tall-format racks with handle hooks and seasonal endcaps.', img: imgC03 },
+  { tag: 'C-04', title: 'Batteries & Power',    desc: 'Compact counter units with secure dispensers and POS branding.', img: imgC04 },
+  { tag: 'C-05', title: 'Automotive Accessories', desc: 'Modular bays for fluids, tools, and hanging consumables.', img: imgC05 },
+  { tag: 'C-06', title: 'Hardware & Fasteners', desc: 'High-density bin systems with dividers and printed indexing.', img: imgC06 },
 ]
 
 export default function Concepts() {

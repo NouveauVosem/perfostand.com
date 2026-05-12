@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfostand — Каталог (черновик)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:    #1a3a6b;
+    --blue-lt: #2d5aa0;
+    --accent:  #e8340a;
+    --gray:    #f4f4f2;
+    --rule:    #d8d8d4;
+    --text:    #1a1a18;
+    --muted:   #6b6b65;
+    --white:   #ffffff;
+    --page-w:  900px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--text);
+    background: #e8e8e4;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── NAV ───────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: var(--blue);
+    color: var(--white);
+    overflow-y: auto;
+    padding: 1.5rem 0;
+    z-index: 100;
+    font-size: 0.75rem;
+  }
+  nav .brand {
+    padding: 0 1.25rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #7fa8e0;
+  }
+  nav a {
+    display: block;
+    padding: .45rem 1.25rem;
+    color: rgba(255,255,255,.65);
+    text-decoration: none;
+    transition: color 150ms, background 150ms;
+    line-height: 1.35;
+  }
+  nav a:hover { color: #fff; background: rgba(255,255,255,.08); }
+  nav a .pg { color: rgba(255,255,255,.3); margin-right: .4rem; font-size: .7rem; }
+
+  /* ── MAIN ──────────────────────────────────────────── */
+  main { margin-left: 220px; padding: 2.5rem 2rem; }
+
+  /* ── PAGE BLOCK ────────────────────────────────────── */
+  .page {
+    background: var(--white);
+    max-width: var(--page-w);
+    margin: 0 auto 2.5rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-inner { padding: 3.5rem 4rem; }
+
+  .page-num {
+    position: absolute;
+    bottom: 1.5rem; right: 2rem;
+    font-size: .7rem;
+    color: var(--rule);
+    letter-spacing: .1em;
+    font-weight: 500;
+  }
+
+  .page-label {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  /* ── COVER ─────────────────────────────────────────── */
+  .cover { background: var(--blue); color: var(--white); min-height: 560px; }
+  .cover .page-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 560px;
+  }
+  .cover-top { flex: 1; }
+  .cover-logo {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    margin-bottom: 4rem;
+  }
+  .cover h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    font-weight: 800;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+  }
+  .cover h1 span { color: #7fa8e0; }
+  .cover-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.6);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+  .cover-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .cover-tags span {
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.25);
+    padding: .35rem .75rem;
+    color: rgba(255,255,255,.7);
+  }
+  .cover-footer {
+    border-top: 1px solid rgba(255,255,255,.15);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .7rem;
+    color: rgba(255,255,255,.3);
+    letter-spacing: .08em;
+  }
+  .cover-footer strong { color: rgba(255,255,255,.7); }
+
+  /* ── IMAGE PLACEHOLDER ─────────────────────────────── */
+  .img-placeholder {
+    background: var(--gray);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION HEADING ───────────────────────────────── */
+  h2.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+  h2.section-title em {
+    font-style: normal;
+    color: var(--blue-lt);
+  }
+
+  /* ── ACCENT BAR ────────────────────────────────────── */
+  .accent-bar {
+    width: 3rem;
+    height: 3px;
+    background: var(--accent);
+    margin-bottom: 1.75rem;
+  }
+
+  /* ── GRID LISTS ────────────────────────────────────── */
+  .col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem 3rem;
+    margin-top: 1.5rem;
+  }
+  .col-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: .875rem;
+  }
+  .list-item::before {
+    content: '—';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: .05em;
+    font-weight: 700;
+  }
+
+  /* ── STAT BLOCKS ───────────────────────────────────── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+  }
+  .stat {
+    background: var(--white);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .stat-val {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: .4rem;
+  }
+  .stat-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+  /* ── TOC ────────────────────────────────────────────── */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  .toc-item {
+    background: var(--white);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 150ms;
+  }
+  .toc-item:hover { background: var(--gray); }
+  .toc-pg {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--rule);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2.5rem;
+  }
+  .toc-title { font-weight: 700; font-size: .9rem; margin-bottom: .25rem; }
+  .toc-desc { font-size: .75rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── PIPELINE ───────────────────────────────────────── */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+    counter-reset: pipe;
+  }
+  .pipe-step {
+    background: var(--white);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    counter-increment: pipe;
+  }
+  .pipe-step::before {
+    content: counter(pipe, decimal-leading-zero);
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: .75rem;
+  }
+  .pipe-step h4 { font-size: .8rem; font-weight: 700; margin-bottom: .35rem; }
+  .pipe-step p { font-size: .7rem; color: var(--muted); line-height: 1.45; }
+
+  /* ── CASE STUDY ─────────────────────────────────────── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  .case-card { background: var(--white); padding: 2rem; }
+  .case-tag {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .75rem;
+  }
+  .case-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 1.25rem; }
+  .case-field { margin-bottom: .6rem; font-size: .825rem; }
+  .case-field strong { color: var(--muted); font-weight: 600; min-width: 110px; display: inline-block; }
+  .case-ph { height: 120px; margin-bottom: 1.25rem; }
+
+  /* ── SWATCH ROW ─────────────────────────────────────── */
+  .swatch-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1.25rem;
+  }
+  .swatch {
+    width: 48px; height: 48px;
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: .2rem;
+    font-size: .6rem;
+    color: rgba(255,255,255,.7);
+    font-weight: 600;
+    letter-spacing: .05em;
+  }
+
+  /* ── TECH TABLE ─────────────────────────────────────── */
+  table.tech {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    margin-top: 1.75rem;
+  }
+  table.tech th {
+    background: var(--blue);
+    color: #fff;
+    padding: .6rem 1rem;
+    text-align: left;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  table.tech td { padding: .65rem 1rem; border-bottom: 1px solid var(--rule); }
+  table.tech tr:last-child td { border-bottom: none; }
+  table.tech tr:nth-child(even) td { background: var(--gray); }
+
+  /* ── ACCESSORIES GRID ───────────────────────────────── */
+  .acc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  .acc-item {
+    background: var(--white);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+  .acc-icon {
+    width: 48px; height: 48px;
+    background: var(--gray);
+    border-radius: 50%;
+    margin: 0 auto .75rem;
+  }
+  .acc-item h4 { font-size: .85rem; font-weight: 700; margin-bottom: .35rem; }
+  .acc-item p { font-size: .75rem; color: var(--muted); }
+
+  /* ── TWO-COL LAYOUT ─────────────────────────────────── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .two-col-img { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+
+  /* ── SPREAD (two pages) ─────────────────────────────── */
+  .spread {
+    background: var(--white);
+    max-width: var(--page-w);
+    margin: 0 auto 2.5rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .spread .half {
+    padding: 3.5rem 3rem;
+  }
+  .spread .half:first-child {
+    border-right: 1px solid var(--rule);
+  }
+  .spread-num-l {
+    position: absolute;
+    bottom: 1.5rem; left: 3rem;
+    font-size: .7rem;
+    color: var(--rule);
+    letter-spacing: .1em;
+  }
+  .spread-num-r {
+    position: absolute;
+    bottom: 1.5rem; right: 3rem;
+    font-size: .7rem;
+    color: var(--rule);
+    letter-spacing: .1em;
+  }
+
+  h3.sub-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--blue);
+  }
+
+  p.body { font-size: .875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  p.note { font-size: .75rem; color: var(--muted); margin-top: 1rem; font-style: italic; }
+
+  /* ── HIGHLIGHT BOX ──────────────────────────────────── */
+  .highlight {
+    background: var(--blue);
+    color: #fff;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .highlight h4 { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: #7fa8e0; margin-bottom: .75rem; }
+  .highlight p { font-size: .875rem; line-height: 1.65; color: rgba(255,255,255,.8); }
+
+  /* ── INDUSTRIES ─────────────────────────────────────── */
+  .ind-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  .ind-item {
+    background: var(--white);
+    padding: 1.5rem 1.25rem;
+  }
+  .ind-num { font-size: 1.25rem; font-weight: 800; color: var(--rule); line-height: 1; margin-bottom: .5rem; }
+  .ind-item h4 { font-size: .85rem; font-weight: 700; margin-bottom: .3rem; }
+  .ind-item p { font-size: .75rem; color: var(--muted); line-height: 1.45; }
+
+  /* ── BRANDING ───────────────────────────────────────── */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  .brand-item {
+    background: var(--white);
+    padding: 1.5rem 1.25rem;
+    border-left: 3px solid transparent;
+    transition: border-color 150ms;
+  }
+  .brand-item:hover { border-left-color: var(--accent); }
+  .brand-item h4 { font-size: .85rem; font-weight: 700; margin-bottom: .4rem; }
+  .brand-item p { font-size: .75rem; color: var(--muted); line-height: 1.5; }
+
+  @media print {
+    nav { display: none; }
+    main { margin-left: 0; padding: 0; }
+    .page, .spread { box-shadow: none; margin-bottom: 0; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     НАВИГАЦИЯ
+════════════════════════════════════════ -->
+<nav>
+  <div class="brand">Perfostand<br>Каталог — черновик</div>
+  <a href="#p1"><span class="pg">01</span> Обложка</a>
+  <a href="#p2"><span class="pg">02</span> О компании Avilon</a>
+  <a href="#p3"><span class="pg">03</span> Навигация по каталогу</a>
+  <a href="#p4-5"><span class="pg">04–05</span> Стеллажи для инструментов</a>
+  <a href="#p6-7"><span class="pg">06–07</span> Брендированные POS-дисплеи</a>
+  <a href="#p8-9"><span class="pg">08–09</span> Кастомное производство</a>
+  <a href="#p10"><span class="pg">10</span> Варианты брендирования</a>
+  <a href="#p11"><span class="pg">11</span> Отрасли</a>
+  <a href="#p12-13"><span class="pg">12–13</span> Реализованные проекты</a>
+  <a href="#p14"><span class="pg">14</span> Технические возможности</a>
+  <a href="#p15-16"><span class="pg">15–16</span> Аксессуары</a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════
+     01 — ОБЛОЖКА
+════════════════════════════════════════ -->
+<div class="page cover" id="p1">
+  <div class="page-inner">
+    <div class="cover-top">
+      <div class="cover-logo">Perfostand — Каталог продукции 2025</div>
+
+      <div class="img-placeholder" style="height:200px;margin-bottom:2.5rem;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.3);">
+        [ ГЛАВНОЕ ИЗОБРАЖЕНИЕ — брендированный стеллаж в реальном магазине ]
+      </div>
+
+      <h1>Брендированные<br><span>торговые стеллажи</span></h1>
+      <p class="cover-sub">Кастомные металлические стеллажи и торговые display-системы для ритейл-сетей и инструментальных брендов. Разработаны под категорию, созданы для масштаба.</p>
+
+      <div class="cover-tags">
+        <span>Стеллажи для инструментов</span>
+        <span>POS-стеллажи</span>
+        <span>Торцевые стеллажи</span>
+        <span>Перфопанельные системы</span>
+        <span>Кастомный брендинг</span>
+        <span>Производство в Европе</span>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <div><strong>Avilon Manufacturing</strong> — Perfostand.com</div>
+      <div>B2B · OEM / Private Label · Европейский экспорт</div>
+    </div>
+  </div>
+  <div class="page-num">01</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     02 — О КОМПАНИИ AVILON
+════════════════════════════════════════ -->
+<div class="page" id="p2">
+  <div class="page-inner">
+    <div class="page-label">02 — О компании Avilon</div>
+
+    <div class="two-col-img">
+      <div>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">Производство,<br><em>на которое можно положиться</em></h2>
+        <p class="body">Avilon — европейский производитель металлических торговых стеллажей с более чем 15-летним опытом в отрасли. Мы работаем с ритейл-сетями, инструментальными брендами и дистрибьюторами, которым нужны производственные display-системы точно под их требования.</p>
+        <p class="body">От единственного прототипа до полного тиража — дизайн, производство, брендирование и логистика под одной крышей.</p>
+
+        <div class="highlight">
+          <h4>Наша позиция</h4>
+          <p>Мы не поставщик каталожных товаров. Мы производственный партнёр. Каждый стеллаж Perfostand изготавливается под заказ — спроектирован под вашу планограмму, оформлен в вашем фирменном стиле.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-val">15+</div>
+            <div class="stat-label">Лет производства</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">ЕС</div>
+            <div class="stat-label">База производства</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">B2B</div>
+            <div class="stat-label">Фокус</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <div class="list-item">Металлические display-системы — стеллажи, стойки, стенды</div>
+          <div class="list-item">Порошковая покраска и полное поверхностное брендирование</div>
+          <div class="list-item">OEM и private label производство</div>
+          <div class="list-item">Кастомные габариты под планограмму</div>
+          <div class="list-item">Европейский экспорт — логистика включена</div>
+          <div class="list-item">Прототипирование до запуска тиража</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">02</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     03 — НАВИГАЦИЯ ПО КАТАЛОГУ
+════════════════════════════════════════ -->
+<div class="page" id="p3">
+  <div class="page-inner">
+    <div class="page-label">03 — Содержание</div>
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Что есть<br><em>в этом каталоге</em></h2>
+
+    <div class="toc-grid">
+      <a class="toc-item" href="#p4-5">
+        <div class="toc-pg">04</div>
+        <div>
+          <div class="toc-title">Стеллажи для инструментов</div>
+          <div class="toc-desc">Перфопанельные стойки, модульные стеллажи, workshop-дисплеи, усиленные стенды, крючковые системы, мобильные стойки</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p6-7">
+        <div class="toc-pg">06</div>
+        <div>
+          <div class="toc-title">Брендированные POS-дисплеи</div>
+          <div class="toc-desc">Ритейл-брендинг, промо-стенды, торцевые дисплеи, сезонные решения, прикассовые зоны, лончевые стенды</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p8-9">
+        <div class="toc-pg">08</div>
+        <div>
+          <div class="toc-title">Кастомное производство</div>
+          <div class="toc-desc">Концепция → дизайн → 3D → прототип → производство → брендирование → логистика</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p10">
+        <div class="toc-pg">10</div>
+        <div>
+          <div class="toc-title">Варианты брендирования</div>
+          <div class="toc-desc">Порошковая покраска, интеграция логотипа, печатные панели, лайтбоксы, акрил, CNC-брендинг</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p11">
+        <div class="toc-pg">11</div>
+        <div>
+          <div class="toc-title">Отрасли</div>
+          <div class="toc-desc">Магазины инструментов, DIY, автомобильный ритейл, электроника, садовая техника, промснабжение, зоотовары, косметика</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p12-13">
+        <div class="toc-pg">12</div>
+        <div>
+          <div class="toc-title">Реализованные проекты</div>
+          <div class="toc-desc">Структурированные кейсы — страна, формат магазина, объём, задача, результат</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p14">
+        <div class="toc-pg">14</div>
+        <div>
+          <div class="toc-title">Технические возможности</div>
+          <div class="toc-desc">Материалы, толщина металла, покраска, лазерная резка, сварка, MOQ, максимальные габариты</div>
+        </div>
+      </a>
+      <a class="toc-item" href="#p15-16">
+        <div class="toc-pg">15</div>
+        <div>
+          <div class="toc-title">Аксессуары</div>
+          <div class="toc-desc">Крючки, разделители, контейнеры, колёса, подсветка, печатные панели, акриловые держатели</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="page-num">03</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     04–05 — СТЕЛЛАЖИ ДЛЯ ИНСТРУМЕНТОВ
+════════════════════════════════════════ -->
+<div class="spread" id="p4-5">
+  <div class="half">
+    <div class="page-label">04–05 — Стеллажи для инструментов</div>
+    <div class="accent-bar"></div>
+    <h2 class="section-title" style="font-size:1.75rem;">Стеллажные системы<br><em>для инструментов</em></h2>
+    <p class="body">Наша сильнейшая и наиболее проработанная категория. Стеллажные системы для инструментов разработаны для высокопоточных ритейл-сред, где грузоподъёмность, модульность и видимость бренда не подлежат компромиссу.</p>
+
+    <div class="img-placeholder" style="height:180px;margin:1.5rem 0;">[ ИЗОБРАЖЕНИЕ — перфостенд для инструментов в магазине ]</div>
+
+    <h3 class="sub-title">Подкатегории</h3>
+    <div class="list-item">Стойки с перфопанелями для инструментов</div>
+    <div class="list-item">Модульные стеллажные системы</div>
+    <div class="list-item">Display-системы для workshop-направления</div>
+    <div class="list-item">Усиленные торговые стеллажи для тяжёлой продукции</div>
+    <div class="list-item">Крючковые системы и аксессуары</div>
+    <div class="list-item">Мобильные инструментальные стойки</div>
+  </div>
+
+  <div class="half">
+    <h3 class="sub-title" style="margin-top:3.5rem;">Ключевые инженерные параметры</h3>
+    <p class="body">Каждая система проектируется под планограмму клиента. Стандартные конфигурации доступны; все габариты и характеристики нагрузки — по запросу.</p>
+
+    <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:1.25rem;">
+      <div class="stat">
+        <div class="stat-val">↑</div>
+        <div class="stat-label">Грузоподъёмность</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">⊞</div>
+        <div class="stat-label">Модульность</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">⊕</div>
+        <div class="stat-label">Совместимость с аксессуарами</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">✎</div>
+        <div class="stat-label">Кастомные размеры</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:1.5rem;">
+      <h4>На чём делать акцент</h4>
+      <p>Нагрузка на полку и на стеллаж целиком. Модульное расширение — добавление секций, вертикальный рост. Совместимость с полным ассортиментом крючков и аксессуаров. Кастомные размеры под любую планограмму и формат магазина.</p>
+    </div>
+
+    <p class="note">Все изделия производятся под заказ. Сроки и MOQ — по запросу. Образцы доступны до запуска тиража.</p>
+  </div>
+
+  <div class="spread-num-l">04</div>
+  <div class="spread-num-r">05</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     06–07 — БРЕНДИРОВАННЫЕ POS-ДИСПЛЕИ
+════════════════════════════════════════ -->
+<div class="spread" id="p6-7">
+  <div class="half">
+    <div class="page-label">06–07 — Брендированные POS-дисплеи</div>
+    <div class="accent-bar" style="background:var(--accent);"></div>
+    <h2 class="section-title" style="font-size:1.75rem;">Брендированные<br><em>POS-дисплеи</em></h2>
+    <p class="body">POS-дисплеи, которые делают больше, чем просто держат товар — они транслируют бренд, стимулируют импульсные покупки и владеют моментом у полки. Созданы для визуального воздействия и маркетинговой эффективности в ритейле.</p>
+
+    <div class="img-placeholder" style="height:180px;margin:1.5rem 0;">[ ИЗОБРАЖЕНИЕ — брендированный торцевой стеллаж или POS-дисплей ]</div>
+
+    <h3 class="sub-title">Подкатегории</h3>
+    <div class="list-item">Брендированные ритейл-дисплеи</div>
+    <div class="list-item">Промо-стенды</div>
+    <div class="list-item">Торцевые дисплеи (endcap)</div>
+    <div class="list-item">Сезонные POS-решения</div>
+    <div class="list-item">Прикассовые дисплеи</div>
+    <div class="list-item">Стенды для запуска новых продуктов</div>
+  </div>
+
+  <div class="half">
+    <h3 class="sub-title" style="margin-top:3.5rem;">Главные акценты</h3>
+    <p class="body">Каждый POS-проект начинается с брендбрифа. Мы переводим визуальную идентичность в физическое присутствие в ритейле — единообразно во всех локациях, с запасом прочности для сезонной ротации.</p>
+
+    <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:1.25rem;margin-bottom:1.5rem;">
+      <div class="stat">
+        <div class="stat-val">Б</div>
+        <div class="stat-label">Брендирование</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">В</div>
+        <div class="stat-label">Визуальная подача</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">М</div>
+        <div class="stat-label">Ритейл-маркетинг</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">С</div>
+        <div class="stat-label">Сезонная ротация</div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Торцевые стеллажи (Endcap)</h3>
+    <p class="body">Торцевые стеллажи занимают самые ценные позиции в любом магазине. Наши endcap-системы разработаны для максимального брендового воздействия — полноростовые брендинговые панели, интегрированная подсветка, конфигурации полок под конкретную категорию.</p>
+
+    <p class="note">Доступны программы сезонной смены дисплеев. Координация роллаута по нескольким магазинам — по запросу.</p>
+  </div>
+
+  <div class="spread-num-l">06</div>
+  <div class="spread-num-r">07</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     08–09 — КАСТОМНОЕ ПРОИЗВОДСТВО
+════════════════════════════════════════ -->
+<div class="spread" id="p8-9">
+  <div class="half">
+    <div class="page-label">08–09 — Кастомное производство</div>
+    <div class="accent-bar"></div>
+    <h2 class="section-title" style="font-size:1.75rem;">Кастомное<br><em>производство</em></h2>
+    <p class="body">Многим компаниям нужен не товар из каталога — им нужен производственный партнёр, который принимает бриф и превращает его в реальность на полке магазина. Именно этим мы и занимаемся.</p>
+    <p class="body">Наш производственный pipeline охватывает всё: от первой концепции до доставки на ваш склад или в магазин.</p>
+
+    <div class="img-placeholder" style="height:160px;margin:1.5rem 0;">[ ИЗОБРАЖЕНИЕ — производство / цех ]</div>
+
+    <p class="body">OEM и private label производство — ключевая часть нашего предложения. Ваш бренд, ваши спецификации — изготовлено и поставлено компанией Avilon.</p>
+
+    <div class="highlight">
+      <h4>Почему кастом важен</h4>
+      <p>Серийный дисплей никогда не подходит идеально. Кастомное производство означает, что ваш стеллаж оптимизирован под ваш товар, вашу планограмму и ваш бренд — без компромиссов.</p>
+    </div>
+  </div>
+
+  <div class="half">
+    <h3 class="sub-title" style="margin-top:3.5rem;">Производственный pipeline</h3>
+    <p class="body" style="margin-bottom:1.5rem;">Шесть этапов от брифа до поставки. Каждый проект проходит через этот pipeline — прозрачность и контрольные точки на каждом шаге.</p>
+
+    <div class="pipeline" style="grid-template-columns:repeat(3,1fr);">
+      <div class="pipe-step">
+        <h4>Концепция и дизайн</h4>
+        <p>Разбор брифа, анализ категории, первые эскизы</p>
+      </div>
+      <div class="pipe-step">
+        <h4>3D-визуализация</h4>
+        <p>Полные рендеры для утверждения до старта производства</p>
+      </div>
+      <div class="pipe-step">
+        <h4>Прототип</h4>
+        <p>Физический образец — проверка посадки, нагрузки, брендинга</p>
+      </div>
+      <div class="pipe-step">
+        <h4>Производство</h4>
+        <p>Полный тираж — лазерная резка, сварка, отделка</p>
+      </div>
+      <div class="pipe-step">
+        <h4>Брендирование</h4>
+        <p>Порошковая покраска, печать, нанесение элементов</p>
+      </div>
+      <div class="pipe-step">
+        <h4>Логистика</h4>
+        <p>Упаковка, паллетирование, доставка в ЕС и на экспорт</p>
+      </div>
+    </div>
+
+    <p class="note">Прототипирование всегда рекомендуется перед подтверждением тиража. Сроки и MOQ обсуждаются на этапе брифа.</p>
+  </div>
+
+  <div class="spread-num-l">08</div>
+  <div class="spread-num-r">09</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     10 — ВАРИАНТЫ БРЕНДИРОВАНИЯ
+════════════════════════════════════════ -->
+<div class="page" id="p10">
+  <div class="page-inner">
+    <div class="page-label">10 — Варианты брендирования</div>
+    <div class="two-col">
+      <div>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">Варианты<br><em>брендирования</em></h2>
+        <p class="body">Хорошо брендированный дисплей — это постоянная реклама в точке покупки. Каждая система Perfostand поддерживает полный спектр брендинговых решений: от простой порошковой окраски до полноценного лайтбокс-хедера.</p>
+        <p class="body">Брендирование закладывается на этапе проектирования и включается в стоимость изделия. Никаких сюрпризов в итоговом счёте.</p>
+
+        <div class="highlight">
+          <h4>Воспринимаемая ценность</h4>
+          <p>Брендирование превращает функциональный стеллаж в актив бренда. Ритейлеры замечают. Байеры запоминают. Покупатели вовлекаются. Инвестиция в брендинг окупается владением категорией.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-title">Доступные элементы брендирования</h3>
+
+        <div class="brand-grid">
+          <div class="brand-item">
+            <h4>Порошковая покраска</h4>
+            <p>Полная палитра RAL. Подбор цвета по образцу — по запросу.</p>
+          </div>
+          <div class="brand-item">
+            <h4>Интеграция логотипа</h4>
+            <p>Вырезанный, штампованный или печатный логотип на любой панели.</p>
+          </div>
+          <div class="brand-item">
+            <h4>Печатные панели</h4>
+            <p>Цифровая печать высокого разрешения на металлических или пенокартонных вставках.</p>
+          </div>
+          <div class="brand-item">
+            <h4>Лайтбоксы</h4>
+            <p>LED-подсветка хедерных панелей для премиального присутствия на полке.</p>
+          </div>
+          <div class="brand-item">
+            <h4>Акриловые вывески</h4>
+            <p>Прозрачный и цветной акрил для ценников, топперов, указателей.</p>
+          </div>
+          <div class="brand-item">
+            <h4>Хедерные панели</h4>
+            <p>Полноширинные брендированные топперы над секциями стеллажей.</p>
+          </div>
+          <div class="brand-item">
+            <h4>Полочные стрипы</h4>
+            <p>Печатные этикет-стрипы для индексации категорий и продуктов.</p>
+          </div>
+          <div class="brand-item">
+            <h4>CNC-брендинг</h4>
+            <p>Логотипы и паттерны, вырезанные непосредственно в металле.</p>
+          </div>
+        </div>
+
+        <div class="swatch-row">
+          <div class="swatch" style="background:#1a3a6b;">RAL</div>
+          <div class="swatch" style="background:#e8340a;">RAL</div>
+          <div class="swatch" style="background:#2d5aa0;">RAL</div>
+          <div class="swatch" style="background:#3a7a3a;">RAL</div>
+          <div class="swatch" style="background:#6b2d6b;">RAL</div>
+          <div class="swatch" style="background:#c8a020;color:rgba(0,0,0,.5);">RAL</div>
+          <div class="swatch" style="background:#4a4a4a;">RAL</div>
+          <div class="swatch" style="background:#1a1a18;">RAL</div>
+        </div>
+        <p class="note">Цвета образцов — ориентировочные. Полный каталог RAL и подбор по образцу — по запросу.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">10</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     11 — ОТРАСЛИ
+════════════════════════════════════════ -->
+<div class="page" id="p11">
+  <div class="page-inner">
+    <div class="page-label">11 — Отрасли</div>
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Отрасли,<br><em>с которыми мы работаем</em></h2>
+    <p class="body" style="max-width:560px;">Стеллажные системы Perfostand работают везде, где товар нужно представить чётко и брендировать последовательно. Наши производственные возможности охватывают восемь ключевых ритейл-категорий.</p>
+
+    <div class="ind-grid">
+      <div class="ind-item">
+        <div class="ind-num">01</div>
+        <h4>Магазины инструментов</h4>
+        <p>Высоконагрузочные перфопанельные системы для электро- и ручного инструмента и аксессуаров.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">02</div>
+        <h4>DIY-магазины</h4>
+        <p>Широкие категорийные стеллажи для стройматериалов, крепежа и товаров для дома.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">03</div>
+        <h4>Автомобильный ритейл</h4>
+        <p>Модульные секции для жидкостей, аксессуаров, инструментов и расходников.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">04</div>
+        <h4>Электроника</h4>
+        <p>Защищённые display-системы для упакованной электроники и кабельной продукции.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">05</div>
+        <h4>Садовая техника</h4>
+        <p>Высокоформатные и сезонные стеллажи для садового инструмента и товаров.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">06</div>
+        <h4>Промышленное снабжение</h4>
+        <p>Высоконагрузочные контейнерные системы и плотные стеллажи для промдистрибьюторов.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">07</div>
+        <h4>Зоотовары</h4>
+        <p>Категорийные дисплеи для корма, аксессуаров и брендированных зоолиний.</p>
+      </div>
+      <div class="ind-item">
+        <div class="ind-num">08</div>
+        <h4>Косметика</h4>
+        <p>Точные display-стойки для косметики, парфюмерии и средств личной гигиены.</p>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:1.5rem;">Не нашли свою категорию? Большинство требований к display можно закрыть нашей модульной системой. Свяжитесь с нами с вашим брифом.</p>
+  </div>
+  <div class="page-num">11</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     12–13 — РЕАЛИЗОВАННЫЕ ПРОЕКТЫ
+════════════════════════════════════════ -->
+<div class="spread" id="p12-13">
+  <div class="half">
+    <div class="page-label">12–13 — Реализованные проекты / Кейсы</div>
+    <div class="accent-bar"></div>
+    <h2 class="section-title" style="font-size:1.75rem;">Реализованные<br><em>проекты</em></h2>
+    <p class="body">Не просто галерея. Структурированные кейсы, которые показывают, как мы работаем — бриф, задача и результат.</p>
+
+    <div class="case-grid" style="grid-template-columns:1fr;margin-top:1.5rem;">
+      <div class="case-card">
+        <div class="case-tag">Кейс — C-01</div>
+        <div class="case-ph img-placeholder">[ ИЗОБРАЖЕНИЕ ПРОЕКТА ]</div>
+        <h3>Стеллаж для инструментов Bosch</h3>
+        <div class="case-field"><strong>Страна:</strong> Германия / регион ЦЕ</div>
+        <div class="case-field"><strong>Формат магазина:</strong> Крупноформатная DIY-сеть</div>
+        <div class="case-field"><strong>Объём:</strong> 200+ единиц, модульные перфопанельные секции с брендированным топпером</div>
+        <div class="case-field"><strong>Задача:</strong> Вписать в существующую планограмму, обеспечить нагрузку под тяжёлый инструмент, единый брендинг в 3 странах</div>
+        <div class="case-field"><strong>Результат:</strong> Полный роллаут за 14 недель. Соответствие планограмме — 100%. Ни одного замечания по монтажу.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="half">
+    <div class="case-grid" style="grid-template-columns:1fr;margin-top:5rem;">
+      <div class="case-card">
+        <div class="case-tag">Кейс — C-02</div>
+        <div class="case-ph img-placeholder">[ ИЗОБРАЖЕНИЕ ПРОЕКТА ]</div>
+        <h3>POS-роллаут для бренда красок</h3>
+        <div class="case-field"><strong>Страна:</strong> Польша / Прибалтика</div>
+        <div class="case-field"><strong>Формат магазина:</strong> Сеть хозяйственных и отделочных магазинов</div>
+        <div class="case-field"><strong>Объём:</strong> Ярусные торцевые дисплеи с интеграцией цветных образцов</div>
+        <div class="case-field"><strong>Задача:</strong> Точность цвета в покраске и печати, сезонная смена хедера</div>
+        <div class="case-field"><strong>Результат:</strong> Признан лучшим категорийным дисплеем ритейл-партнёром клиента в 2024 году.</div>
+      </div>
+
+      <div class="case-card" style="margin-top:1px;">
+        <div class="case-tag">Кейс — C-03</div>
+        <h3>Сезонный дисплей садового инструмента</h3>
+        <div class="case-field"><strong>Страна:</strong> Чехия / Словакия</div>
+        <div class="case-field"><strong>Формат магазина:</strong> Садовые центры и строительные магазины</div>
+        <div class="case-field"><strong>Объём:</strong> Высокоформатные стеллажи, сезонный конверсионный комплект для endcap</div>
+        <div class="case-field"><strong>Задача:</strong> Две сезонные конфигурации на одной базовой стойке</div>
+        <div class="case-field"><strong>Результат:</strong> Двухсезонный дизайн дал экономию 40% по сравнению с двумя отдельными изделиями.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spread-num-l">12</div>
+  <div class="spread-num-r">13</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     14 — ТЕХНИЧЕСКИЕ ВОЗМОЖНОСТИ
+════════════════════════════════════════ -->
+<div class="page" id="p14">
+  <div class="page-inner">
+    <div class="page-label">14 — Технические возможности</div>
+    <div class="two-col">
+      <div>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">Технические<br><em>возможности</em></h2>
+        <p class="body">Серьёзные B2B-покупатели требуют технической уверенности перед выбором производственного партнёра. В этом разделе задокументированы наши производственные параметры — материалы, допуски, покрытия и минимальные объёмы.</p>
+
+        <div class="highlight" style="margin-top:2rem;">
+          <h4>Стандарт качества</h4>
+          <p>Все изделия Perfostand производятся в соответствии с европейскими конструктивными стандартами для торговых стеллажных систем. Сертификаты на материалы и данные нагрузочных испытаний — по запросу для ключевых клиентов.</p>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <div class="list-item">Сталь, нержавеющая сталь, алюминиевые профили</div>
+          <div class="list-item">Порошковая покраска — полный RAL, подбор под образец</div>
+          <div class="list-item">Лазерная резка, CNC-гибка, MIG/TIG-сварка</div>
+          <div class="list-item">Кастомная упаковка — паллеты для экспортной поставки</div>
+        </div>
+      </div>
+
+      <div>
+        <table class="tech">
+          <thead>
+            <tr>
+              <th>Параметр</th>
+              <th>Характеристика</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Основной материал</strong></td><td>Холоднокатаная сталь (DC01/DC04)</td></tr>
+            <tr><td><strong>Толщина металла</strong></td><td>1,0 — 3,0 мм стандарт; до 6 мм по запросу</td></tr>
+            <tr><td><strong>Отделка поверхности</strong></td><td>Порошковая покраска, цинковый грунт, оцинковка</td></tr>
+            <tr><td><strong>Порошковая покраска</strong></td><td>Эпоксидно-полиэфирная, 60–80 мкм, полная палитра RAL</td></tr>
+            <tr><td><strong>Лазерная резка</strong></td><td>Волоконный лазер, допуск ±0,1 мм</td></tr>
+            <tr><td><strong>Сварка</strong></td><td>MIG / TIG, сертифицированные сварщики</td></tr>
+            <tr><td><strong>Макс. габариты изделия</strong></td><td>2400 × 1200 × 800 мм (В×Ш×Г)</td></tr>
+            <tr><td><strong>Нагрузка на полку</strong></td><td>До 120 кг/полка (стандарт); выше — по запросу</td></tr>
+            <tr><td><strong>MOQ</strong></td><td>От 50 единиц (стандарт); меньше — для прототипов</td></tr>
+            <tr><td><strong>Срок производства</strong></td><td>4–8 недель с момента утверждения дизайна</td></tr>
+            <tr><td><strong>Упаковка</strong></td><td>Плоская упаковка или в сборе; кастомная экспортная тара</td></tr>
+            <tr><td><strong>Сертификаты</strong></td><td>По запросу — данные нагрузочных испытаний, сертификаты на материалы</td></tr>
+          </tbody>
+        </table>
+
+        <p class="note">Характеристики — ориентировочные. Финальные параметры подтверждаются при утверждении дизайна.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">14</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     15–16 — АКСЕССУАРЫ
+════════════════════════════════════════ -->
+<div class="spread" id="p15-16">
+  <div class="half">
+    <div class="page-label">15–16 — Аксессуары и расширения системы</div>
+    <div class="accent-bar"></div>
+    <h2 class="section-title" style="font-size:1.75rem;">Аксессуары<br><em>и расширения системы</em></h2>
+    <p class="body">Каждая стеллажная система Perfostand разработана для совместной работы с нашим полным ассортиментом аксессуаров. Аксессуары расширяют систему, увеличивают плотность выкладки и позволяют использовать одну базовую стойку в нескольких категориях.</p>
+    <p class="body">Все аксессуары производятся внутри компании по тем же стандартам, что и основные изделия — та же сталь, та же отделка, те же допуски.</p>
+
+    <div class="img-placeholder" style="height:180px;margin:1.5rem 0;">[ ИЗОБРАЖЕНИЕ — раскладка аксессуаров или взорванный вид ]</div>
+
+    <div class="highlight">
+      <h4>Философия системы</h4>
+      <p>Купи раму один раз. Настрой под любую категорию с помощью аксессуаров. Смени шаг крючков, добавь контейнеры, замени печатные панели — новая рама не нужна. В этом преимущество Perfostand.</p>
+    </div>
+  </div>
+
+  <div class="half">
+    <div class="acc-grid" style="grid-template-columns:repeat(2,1fr);margin-top:3.5rem;">
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Крючки</h4>
+        <p>Одинарные, двойные, петлевые. Разные варианты шага. Хром и порошковое покрытие.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Разделители</h4>
+        <p>Регулируемые полочные разделители для группировки и структурирования категорий.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Контейнеры и лотки</h4>
+        <p>Открытые контейнеры для мелких товаров, крепежа и расходников.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Колёса и основания</h4>
+        <p>Блокируемые колёса для мобильных стоек. Регулируемые ножки для стационарных.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Подсветка</h4>
+        <p>LED-полосы для полок. Лайтбокс-модули для хедеров. Проводка скрыта в раме.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Печатные панели</h4>
+        <p>Сменные графические панели для сезонных и акционных обновлений.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Акриловые держатели</h4>
+        <p>Полосы для ценников, листовница, информационные кармашки — прозрачный и брендированный акрил.</p>
+      </div>
+      <div class="acc-item">
+        <div class="acc-icon"></div>
+        <h4>Полочные стопперы</h4>
+        <p>Фронтальные ограничители для предотвращения падения товара с края полки.</p>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:1.5rem;">Полный каталог аксессуаров доступен отдельно. Кастомные аксессуары производятся под заказ. MOQ применяется.</p>
+  </div>
+
+  <div class="spread-num-l">15</div>
+  <div class="spread-num-r">16</div>
+</div>
+
+</main>
+</body>
+</html>
