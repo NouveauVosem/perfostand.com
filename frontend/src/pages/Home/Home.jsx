@@ -4,6 +4,7 @@ import Concepts      from './sections/Concepts/Concepts'
 import Why           from './sections/Why/Why'
 import Industries    from './sections/Industries/Industries'
 import Contact       from './sections/Contact/Contact'
+import Legal         from './sections/Legal/Legal'
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <Concepts />
       <Why />
       <Industries />
-      <Contact />
+      {/* <Contact /> */}
+      <Legal />
     </>
   )
 }

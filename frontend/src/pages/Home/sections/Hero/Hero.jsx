@@ -1,4 +1,4 @@
-import heroImage from '../../../../assets/hero-stands.png'
+import heroImage from '../../../../assets/gpt-hero-1-extended-2400.jpg'
 import styles from './Hero.module.scss'
 
 const STATS = [
@@ -39,9 +39,9 @@ export default function Hero() {
                 <a href="#contact" className={styles.btnPrimary}>
                   Request Quote →
                 </a>
-                <a href="#contact" className={styles.btnOutline}>
+                {/* <a href="#contact" className={styles.btnOutline}>
                   Send Product List
-                </a>
+                </a> */}
               </div>
 
               <dl className={styles.stats}>

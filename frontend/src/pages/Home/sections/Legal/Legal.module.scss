@@ -1,0 +1,96 @@
+@use '../../../../styles/abstracts' as *;
+
+.section {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-rule);
+  padding-block: 4rem;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+}
+
+.addressLink {
+  font-style: normal;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 500;
+  color: var(--color-graphite);
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover { color: var(--color-primary); }
+}
+
+// Addresses
+.addresses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-rule);
+
+  @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(lg) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addressLines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-style: normal;
+  font-size: 0.875rem;
+  color: var(--color-graphite-soft);
+  line-height: 1.6;
+}
+
+// Phones
+.phonesWrap {
+  margin-top: 2.5rem;
+}
+
+.phonesLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-graphite-soft);
+  margin-bottom: 1.5rem;
+}
+
+.phones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+
+  @include respond-to(sm) { grid-template-columns: repeat(3, 1fr); }
+  @include respond-to(lg) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px solid var(--color-rule);
+  list-style: none;
+}
+
+.phoneNumber {
+  font-size: 0.875rem;
+  color: var(--color-graphite);
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover { color: var(--color-primary); }
+}
