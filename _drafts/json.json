@@ -1,0 +1,57 @@
+{
+  "invoice_number": "AFV05/2621",
+  "invoice_date": "2026-05-14",
+  "exporter": "ALVLA s. r. o.",
+  "importer": "Grand Tvottur ehf",
+  "total_value": "10760.00",
+  "total_net_weight": 1086.2,
+  "total_gross_weight": 1200.0,
+  "total_weight_str": "1.200,000",
+  "total_pallets": 4,
+  "total_packages_str": "4 palety",
+  "truck_tractor": "1TV8355",
+  "truck_trailer": "3AU4485",
+  "border_crossing": "Hirtshals",
+  "items": [
+    {
+      "article": "Kontejner AV-R 8365-1,75, nenamontovaný, na paletách",
+      "net_weight": 694.0,
+      "gross_weight": 769.0,
+      "quantity": 20,
+      "package_type": "3 palety",
+      "cover": "zink"
+    },
+    {
+      "article": "Potah N 8565-1,66+2M+P+AL (OXF-190 Palace Blue 5) Grand",
+      "net_weight": 211.0,
+      "gross_weight": 236.0,
+      "quantity": 190,
+      "package_type": "1 paleta",
+      "cover": "polyester 100%"
+    },
+    {
+      "article": "Potah N 8565-1,66+2M+P+AL (OXF-190 Palace Blue 5) Fjarda",
+      "net_weight": 110.0,
+      "gross_weight": 121.0,
+      "quantity": 100,
+      "package_type": "cast palety",
+      "cover": "polyester 100%"
+    },
+    {
+      "article": "Pevné kolo 125 mm -40wt",
+      "net_weight": 29.6,
+      "gross_weight": 31.0,
+      "quantity": 40,
+      "package_type": "cast palety",
+      "cover": "kov+guma+polypropylen"
+    },
+    {
+      "article": "Kolo otočné s brzdou 125 mm -40wt",
+      "net_weight": 41.6,
+      "gross_weight": 43.0,
+      "quantity": 40,
+      "package_type": "cast palety",
+      "cover": "kov+guma+polypropylen"
+    }
+  ]
+}
