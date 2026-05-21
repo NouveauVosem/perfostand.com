@@ -5,14 +5,14 @@ const NAV_LINKS = [
   { label: 'Customization', href: '#customization' },
   { label: 'Concepts',      href: '#concepts' },
   { label: 'Why Perfostand', href: '#why' },
-  { label: 'Industries',    href: '#industries' },
+  { label: 'Contact',       href: '#contact' },
 ]
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.logo}>
+        <Link to="/" className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className={styles.logoMark}>P</span>
           <span className={styles.logoName}>Perfostand</span>
           <span className={`num-badge ${styles.logoBadge}`}>/ EU OEM</span>

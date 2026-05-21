@@ -1,13 +1,19 @@
 import { Award, Wrench, Boxes } from 'lucide-react'
 import styles from './Customization.module.scss'
+import imgHooks        from '../../../../assets/customization/hooks-crop.jpg'
+import imgShelves      from '../../../../assets/customization/shelves-crop.jpg'
+import imgPegboard     from '../../../../assets/customization/pegboard-crop.jpg'
+import imgTopper       from '../../../../assets/customization/topper-crop.jpg'
+import imgAccessories  from '../../../../assets/customization/accesories-crop.jpg'
+import imgRal          from '../../../../assets/customization/ral-crop.jpg'
 
 const ITEMS = [
-  { title: 'Interchangeable Hooks', desc: 'Single, double, and product-specific hook profiles for maximum flexibility.' },
-  { title: 'Adjustable Shelves',    desc: 'Tool-free repositioning across the full panel height to fit any product.' },
-  { title: 'Pegboard Panels',       desc: 'Standard and reinforced gauges for heavy SKUs and hooks.' },
-  { title: 'Branding Toppers',      desc: 'Printed, embossed, or backlit header units for strong brand presence.' },
-  { title: 'RAL Color Range',       desc: 'Any RAL powder-coated finish for perfect brand alignment.' },
-  { title: 'Modular Accessories',   desc: 'Trays, dividers, price rails, lighting, and more to complete your display.' },
+  { title: 'Interchangeable Hooks', desc: 'Single, double, and product-specific hook profiles for maximum flexibility.',  img: imgHooks },
+  { title: 'Adjustable Shelves',    desc: 'Tool-free repositioning across the full panel height to fit any product.',      img: imgShelves },
+  { title: 'Pegboard Panels',       desc: 'Standard and reinforced gauges for heavy SKUs and hooks.',                      img: imgPegboard },
+  { title: 'Branding Toppers',      desc: 'Printed, embossed, or backlit header units for strong brand presence.',         img: imgTopper },
+  { title: 'RAL Color Range',       desc: 'Any RAL powder-coated finish for perfect brand alignment.',                     img: imgRal },
+  { title: 'Modular Accessories',   desc: 'Trays, dividers, price rails, lighting, and more to complete your display.',    img: imgAccessories },
 ]
 
 const BENEFITS = [
@@ -55,7 +61,9 @@ export default function Customization() {
         <div className={styles.cards}>
           {ITEMS.map((item, i) => (
             <article key={item.title} className={styles.card}>
-              <div className={`placeholder-surface ${styles.cardImage}`} />
+              <div className={`${styles.cardImage}${!item.img ? ` placeholder-surface` : ''}`}>
+                {item.img && <img src={item.img} alt={item.title} className={styles.cardImg} />}
+              </div>
               <div className={styles.cardBody}>
                 <div className={styles.cardTop}>
                   <span className={styles.cardIcon} />

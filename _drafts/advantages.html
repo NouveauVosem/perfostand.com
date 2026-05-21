@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfostand — Наши преимущества / Our Advantages</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:    #1a3a6b;
+    --blue-lt: #2d5aa0;
+    --accent:  #e8340a;
+    --gray:    #f4f4f2;
+    --rule:    #d8d8d4;
+    --text:    #1a1a18;
+    --muted:   #6b6b65;
+    --white:   #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #e8e8e4;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 1.5rem;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    width: 100%;
+    max-width: 960px;
+    box-shadow: 0 2px 24px rgba(0,0,0,.10);
+  }
+
+  /* ── HEADER ── */
+  .card-head {
+    background: var(--blue);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+  }
+  .card-head .brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .card-head .brand span { color: #7fa8e0; }
+  .card-head .subtitle {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,.45);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* ── COLUMN LABELS ── */
+  .col-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 2px solid var(--blue);
+  }
+  .col-label {
+    padding: .6rem 3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .col-label + .col-label {
+    border-left: 1px solid var(--rule);
+  }
+
+  /* ── ROWS ── */
+  .adv-list { list-style: none; }
+
+  .adv-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .adv-item:last-child { border-bottom: none; }
+
+  .col-ru {
+    padding: 1.6rem 3rem;
+    border-right: 1px solid var(--rule);
+  }
+  .col-en {
+    padding: 1.6rem 3rem;
+  }
+
+  .item-num {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .08em;
+    margin-bottom: .35rem;
+  }
+
+  .item-title-ru {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1.3;
+    margin-bottom: .4rem;
+  }
+
+  .item-body-ru {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .item-title-en {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: .4rem;
+    margin-top: 1.05rem;
+  }
+
+  .item-body-en {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .clients {
+    margin-top: .4rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .clients strong {
+    color: var(--text);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ── FOOTER ── */
+  .card-foot {
+    background: var(--gray);
+    border-top: 1px solid var(--rule);
+    padding: .9rem 3rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: .03em;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Header -->
+  <div class="card-head">
+    <div class="brand">Perfo<span>stand</span></div>
+    <div class="subtitle">Наши преимущества&ensp;/&ensp;Our Advantages</div>
+  </div>
+
+  <!-- Column labels -->
+  <div class="col-labels">
+    <div class="col-label">Русский</div>
+    <div class="col-label">English</div>
+  </div>
+
+  <!-- Rows -->
+  <ul class="adv-list">
+
+    <!-- 1 -->
+    <li class="adv-item">
+      <div class="col-ru">
+        <div class="item-num">01</div>
+        <div class="item-title-ru">Европейское производство с фокусом на качество и надёжность</div>
+        <div class="item-body-ru">
+          Наш опыт подтверждён многолетним сотрудничеством с международными инструментальными и промышленными брендами.
+          <div class="clients">
+            <strong>King Tony</strong> (Франция) · <strong>EGA Master</strong> (Испания) · <strong>Altuna</strong> (Испания) · <strong>Bosch</strong> (Украина) · <strong>Kärcher</strong> (Украина)
+          </div>
+        </div>
+      </div>
+      <div class="col-en">
+        <div class="item-title-en">European-Made Quality &amp; Reliability</div>
+        <div class="item-body-en">
+          Proven by long-term partnerships with international industrial and tool brands across Europe.
+          <div class="clients">
+            <strong>King Tony</strong> (France) · <strong>EGA Master</strong> (Spain) · <strong>Altuna</strong> (Spain) · <strong>Bosch</strong> · <strong>Kärcher</strong>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <!-- 2 -->
+    <li class="adv-item">
+      <div class="col-ru">
+        <div class="item-num">02</div>
+        <div class="item-title-ru">Конкурентные цены, короткие сроки поставки</div>
+        <div class="item-body-ru">
+          Собственное производство в Украине обеспечивает выгодные цены для B2B проектов.<br>
+          Стандартный срок производства и поставки в Европу — <strong>6–8 недель</strong>.
+        </div>
+      </div>
+      <div class="col-en">
+        <div class="item-title-en">Competitive Pricing &amp; Fast Delivery</div>
+        <div class="item-body-en">
+          In-house manufacturing keeps B2B costs low.<br>
+          Standard production and delivery to Europe — <strong>6–8 weeks</strong>.
+        </div>
+      </div>
+    </li>
+
+    <!-- 3 -->
+    <li class="adv-item">
+      <div class="col-ru">
+        <div class="item-num">03</div>
+        <div class="item-title-ru">Полный цикл разработки: от идеи до конструкции</div>
+        <div class="item-body-ru">
+          Наши инженеры и дизайнеры создают индивидуальные решения под проект — по конфигурации, размерам, материалам и дизайну.
+        </div>
+      </div>
+      <div class="col-en">
+        <div class="item-title-en">End-to-End Engineering</div>
+        <div class="item-body-en">
+          Our engineers and designers develop custom solutions — configuration, dimensions, materials, and visual design.
+        </div>
+      </div>
+    </li>
+
+    <!-- 4 -->
+    <li class="adv-item">
+      <div class="col-ru">
+        <div class="item-num">04</div>
+        <div class="item-title-ru">Логистика и таможенное оформление по всему ЕС</div>
+        <div class="item-body-ru">
+          Берём на себя весь процесс доставки и таможенного оформления на европейских рынках.
+        </div>
+      </div>
+      <div class="col-en">
+        <div class="item-title-en">Pan-European Logistics &amp; Customs</div>
+        <div class="item-body-en">
+          We manage the full delivery chain — shipping, documentation, and customs clearance across Europe.
+        </div>
+      </div>
+    </li>
+
+    <!-- 5 -->
+    <li class="adv-item">
+      <div class="col-ru">
+        <div class="item-num">05</div>
+        <div class="item-title-ru">Минимальная партия от 50 штук</div>
+        <div class="item-body-ru">
+          Гибкие партии производства. Возможность изготовления небольших кастомизированных партий и опытных образцов перед запуском тиража.
+        </div>
+      </div>
+      <div class="col-en">
+        <div class="item-title-en">Flexible MOQ from 50 Units</div>
+        <div class="item-body-en">
+          Small custom runs available. Prototype production before full-scale launch — reducing risk and time to market.
+        </div>
+      </div>
+    </li>
+
+    <!-- 6 -->
+    <li class="adv-item">
+      <div class="col-ru">
+        <div class="item-num">06</div>
+        <div class="item-title-ru">Эффективная логистика и хранение</div>
+        <div class="item-body-ru">
+          Компактная разборная конструкция длиной до 1,2 м упрощает упаковку, хранение и рассылку в точки продаж.
+        </div>
+      </div>
+      <div class="col-en">
+        <div class="item-title-en">Flat-Pack Logistics</div>
+        <div class="item-body-en">
+          Knock-down design optimized for efficient transport, storage, and Euro pallet shipping to retail points.
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="card-foot">
+    <span>perfostand.com</span>
+    <span>Наши преимущества / Our Advantages</span>
+  </div>
+
+</div>
+
+</body>
+</html>
