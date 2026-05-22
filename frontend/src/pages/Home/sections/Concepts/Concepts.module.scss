@@ -44,11 +44,18 @@
   @include respond-to(lg) { grid-template-columns: 1fr 1fr 1fr; }
 }
 
+.cardLink {
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   background-color: var(--color-bg);
   padding: 1.5rem;
+  cursor: pointer;
 }
 
 .cardTop {
