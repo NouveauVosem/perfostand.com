@@ -1,7 +1,8 @@
 import imgC01 from '../assets/concepts/concept-c01.jpg'
 import imgC01Hook from '../assets/concepts/concept-c01-hook.jpg'
 import imgC01Foot from '../assets/concepts/concept-c01-foot.jpg'
-import imgC01Pegpanel from '../assets/concepts/concept-c01-pegpanel.jpg'
+import imgC01Knockdown from '../assets/concepts/concept-c01-knockdown.jpg'
+import imgC01Topper from '../assets/concepts/concept-c01-topper.jpg'
 import imgC02 from '../assets/concepts/concept-c02.jpg'
 import imgC03 from '../assets/concepts/concept-c03.jpg'
 import imgC04 from '../assets/concepts/concept-c04.jpg'
@@ -25,14 +26,14 @@ export const CONCEPTS = [
     dimensions: { height: 1800, width: 600, depth: 420, weight: '46.2 kg' },
     colours: [
       { ral: 'RAL 7016', hex: '#383E42' },
-      { ral: 'RAL 9003', hex: '#F4F4F4' },
+      { ral: 'RAL 3020', hex: '#D11A2A' },
     ],
     attributes: ['modular pegboard', 'heavy-load hooks', 'flat-pack x2', 'brand-custom header'],
     figs: [
       { num: '01', detail: 'DETAIL 1', label: 'HEAVY-LOAD HOOK', img: imgC01Hook },
-      { num: '02', detail: 'DETAIL 3', label: 'Knock-Down Stand', img: imgC01Pegpanel },
+      { num: '02', detail: 'DETAIL 3', label: 'Knock-Down Stand', img: imgC01Knockdown },
       { num: '03', detail: 'DETAIL 5', label: 'STABILIZER FOOT', img: imgC01Foot },
-      { num: '04', detail: 'TOP CROWN', label: 'HEADER PANEL' },
+      { num: '04', detail: 'TOP CROWN', label: 'HEADER PANEL', img: imgC01Topper },
     ],
   },
   {

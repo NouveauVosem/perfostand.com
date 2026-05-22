@@ -53,7 +53,7 @@
 
   @include respond-to(md) {
     grid-template-columns: 280px 1fr;
-    border-bottom: 1px solid var(--color-rule);
+    // border-bottom: 1px solid var(--color-rule);
   }
 
   @include respond-to(lg) {
@@ -211,6 +211,7 @@
   overflow: hidden;
   flex: 1;
   min-height: 320px;
+  
 
   @include respond-to(lg) {
     min-height: 420px;
@@ -228,7 +229,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  
 }
 
 .figTag {
@@ -274,6 +275,11 @@
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
 }
 
 .detailCaption {
