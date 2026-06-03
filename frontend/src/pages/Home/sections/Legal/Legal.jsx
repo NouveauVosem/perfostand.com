@@ -24,14 +24,12 @@ const ADDRESSES = [
 
 const PHONES = [
   { lang: 'EN', number: '+420 234 717 526' },
-  { lang: 'DE', number: '+420 23 407 66 01' },
-  { lang: 'FR', number: '+420 234 280 600' },
+  { lang: 'DE', number: '+49 21 027 392 497' },
+  { lang: 'FR', number: '+33 1 78 91 70 83' },
   { lang: 'CZ', number: '+420 608 609 222' },
   { lang: 'IT', number: '+39 0583 1706661' },
-  { lang: 'ES', number: '+39 0583 1706661' },
   { lang: 'HU', number: '+36 1 901 02 81' },
-  { lang: 'SE', number: '+420 234 717 526' },
-  { lang: 'PL', number: '+48 22 602 24 56' },
+  { lang: 'PL', number: '+48 22 266 20 78' },
   { lang: 'NL', number: '+48 22 602 24 56' },
   { lang: 'GR', number: '+30 211 333 75 26' },
 ]
