@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { CONCEPTS } from '../../../../data/concepts'
 import styles from './Concepts.module.scss'
 
@@ -21,11 +20,10 @@ export default function Concepts() {
 
         <div className={styles.grid}>
           {CONCEPTS.map((c) => (
-            <Link key={c.id} to={c.slug ? `/${c.slug}` : `/concepts/${c.id}`} className={styles.cardLink}>
+            <div key={c.id} className={styles.cardLink}>
               <article className={styles.card}>
                 <div className={styles.cardTop}>
                   <span className="num-badge">{c.tag}</span>
-                  <span className={styles.cardRef}>Reference →</span>
                 </div>
                 {c.img
                   ? <img src={c.img} alt={c.title} className={styles.cardImage} />
@@ -34,7 +32,7 @@ export default function Concepts() {
                 <h3 className={styles.cardTitle}>{c.title}</h3>
                 <p className={styles.cardDesc}>{c.desc}</p>
               </article>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
