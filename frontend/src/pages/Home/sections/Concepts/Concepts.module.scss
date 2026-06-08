@@ -55,23 +55,12 @@
   flex-direction: column;
   background-color: var(--color-bg);
   padding: 1.5rem;
-  cursor: pointer;
 }
 
 .cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.cardRef {
-  font-size: 0.75rem;
-  color: var(--color-graphite-soft);
-  transition: color 150ms ease;
-
-  .card:hover & {
-    color: var(--color-primary);
-  }
 }
 
 .cardImage {
