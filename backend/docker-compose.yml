@@ -1,0 +1,21 @@
+services:
+  perfostand-db:
+    image: postgres:16-alpine
+    container_name: perfostand-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: perfostand_user
+      POSTGRES_PASSWORD: perfostand_pass
+      POSTGRES_DB: perfostand_db
+    # заставляем Postgres слушать 5433 внутри контейнера,
+    # чтобы маппинг 5433:5433 реально работал
+    command: -p 5433
+    ports:
+      # внешний 5433 (на хосте) → 5433 (контейнер),
+      # чтобы не конфликтовать с уже занятым 5432 (Crystal)
+      - "5433:5433"
+    volumes:
+      - perfostand-db-data:/var/lib/postgresql/data
+
+volumes:
+  perfostand-db-data:

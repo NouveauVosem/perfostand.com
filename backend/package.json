@@ -1,0 +1,38 @@
+{
+  "name": "perfostand-backend",
+  "author": "Yehor Barabash",
+  "version": "0.0.1",
+  "description": "perfostand.com backend",
+  "devDependencies": {
+    "@types/compression": "^1.8.1",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^16.11.10",
+    "ts-node": "10.9.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
+    "axios": "^1.13.2",
+    "bcrypt": "^5.1.1",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^8.3.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.20"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "build": "tsc",
+    "serve": "node build/index.js"
+  }
+}

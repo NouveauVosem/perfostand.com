@@ -1,0 +1,92 @@
+@use '../../../styles/abstracts' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  background-color: color-mix(in oklab, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  @include rule-bottom;
+}
+
+.inner {
+  @include flex-between;
+  height: 4rem;
+}
+
+// Logo
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--color-graphite);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.logoName {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-graphite);
+}
+
+.logoBadge {
+  display: none;
+
+  @include respond-to(sm) {
+    display: inline;
+    margin-left: 0.5rem;
+  }
+}
+
+// Nav
+.nav {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+
+  @include respond-to(md) {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-size: 0.875rem;
+  color: var(--color-graphite-soft);
+  transition: color 150ms ease;
+
+  &:hover {
+    color: var(--color-graphite);
+  }
+}
+
+// CTA
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding-inline: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 150ms ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

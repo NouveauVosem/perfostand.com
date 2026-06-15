@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    /* Базовые настройки */
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022", "DOM"],
+    "outDir": "./build",
+    "rootDir": "./src",
+
+    /* TypeORM настройки (ОБЯЗАТЕЛЬНО) */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    /* Строгость */
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+
+    /* Модули и импорты */
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* Удобство */
+    "baseUrl": "./src",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types"
+    ]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
+}

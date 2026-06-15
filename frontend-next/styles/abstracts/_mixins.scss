@@ -1,0 +1,39 @@
+@use 'variables' as *;
+
+// Respond-to breakpoint mixin
+@mixin respond-to($bp) {
+  @if      $bp == sm  { @media (min-width: $bp-sm)  { @content; } }
+  @else if $bp == md  { @media (min-width: $bp-md)  { @content; } }
+  @else if $bp == lg  { @media (min-width: $bp-lg)  { @content; } }
+  @else if $bp == xl  { @media (min-width: $bp-xl)  { @content; } }
+  @else if $bp == 2xl { @media (min-width: $bp-2xl) { @content; } }
+}
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Container
+@mixin container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: $container-max;
+  padding-inline: $container-px;
+
+  @include respond-to(md) {
+    padding-inline: $container-px-md;
+  }
+}
+
+// Rule line (border utility)
+@mixin rule-top    { border-top: 1px solid var(--color-rule); }
+@mixin rule-bottom { border-bottom: 1px solid var(--color-rule); }
