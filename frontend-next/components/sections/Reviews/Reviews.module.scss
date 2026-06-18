@@ -1,0 +1,325 @@
+@use '../../../styles/abstracts' as *;
+
+.section {
+  background-color: var(--color-bg);
+  @include rule-bottom;
+  padding-block: 6rem;
+}
+
+.grid {
+  display: grid;
+  gap: 3.5rem;
+
+  @include respond-to(md) { grid-template-columns: 5fr 7fr; }
+}
+
+// Info column
+.title {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+}
+
+.lead {
+  margin-top: 1.25rem;
+  max-width: 28rem;
+  color: var(--color-graphite-soft);
+}
+
+// Form
+.form { }
+
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+
+  @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+}
+
+.fieldHalf { }
+.fieldFull {
+  @include respond-to(sm) { grid-column: 1 / -1; }
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  height: 2.75rem;
+  border: 1px solid var(--color-rule);
+  background-color: var(--color-surface);
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 150ms ease;
+
+  &:focus { border-color: var(--color-graphite); }
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid var(--color-rule);
+  background-color: var(--color-surface);
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+  transition: border-color 150ms ease;
+
+  &:focus { border-color: var(--color-graphite); }
+}
+
+// Photo upload
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.fileButton {
+  display: inline-flex;
+  align-items: center;
+  height: 2.75rem;
+  padding-inline: 1.25rem;
+  border: 1px dashed var(--color-rule);
+  background-color: var(--color-surface);
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: border-color 150ms ease;
+
+  &:hover { border-color: var(--color-graphite); }
+}
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.thumb {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid var(--color-rule);
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.thumbRemove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-graphite);
+  color: var(--color-primary-fg);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.error {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-destructive);
+}
+
+.formFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--color-graphite-soft);
+  max-width: 24rem;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  height: 3rem;
+  padding-inline: 1.75rem;
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: opacity 150ms ease;
+
+  &:hover { opacity: 0.9; }
+  &:disabled { opacity: 0.5; cursor: default; }
+}
+
+.formError {
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 2px solid var(--color-destructive);
+  background-color: color-mix(in oklab, var(--color-destructive) 6%, var(--color-surface));
+  font-size: 0.875rem;
+  color: var(--color-destructive);
+}
+
+// --- Success panel (replaces the form after submit) ---
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  min-height: 100%;
+  padding: 3rem 2rem;
+  border: 1px solid var(--color-rule);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  animation: rv-panel-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+// Soft radial pulse behind the checkmark
+.successGlow {
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--color-primary) 35%, transparent) 0%,
+    transparent 70%
+  );
+  transform: translate(-25%, -25%) scale(0);
+  animation: rv-glow 900ms ease-out 250ms both;
+  pointer-events: none;
+}
+
+.successCheck {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: block;
+}
+
+.successCheckCircle {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: rv-stroke 600ms cubic-bezier(0.65, 0, 0.45, 1) 150ms forwards;
+}
+
+.successCheckMark {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3.5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: rv-stroke 350ms cubic-bezier(0.65, 0, 0.45, 1) 600ms forwards;
+}
+
+.successEyebrow {
+  margin-top: 1.75rem;
+  color: var(--color-primary);
+  animation: rv-rise 500ms cubic-bezier(0.16, 1, 0.3, 1) 650ms both;
+}
+
+.successTitle {
+  margin-top: 0.75rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.15;
+  animation: rv-rise 500ms cubic-bezier(0.16, 1, 0.3, 1) 750ms both;
+}
+
+.successText {
+  margin-top: 1rem;
+  max-width: 30rem;
+  color: var(--color-graphite-soft);
+  font-size: 0.95rem;
+  animation: rv-rise 500ms cubic-bezier(0.16, 1, 0.3, 1) 850ms both;
+}
+
+.successReset {
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  height: 3rem;
+  padding-inline: 1.75rem;
+  border: 1px solid var(--color-graphite);
+  background-color: transparent;
+  color: var(--color-graphite);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+  animation: rv-rise 500ms cubic-bezier(0.16, 1, 0.3, 1) 950ms both;
+
+  &:hover {
+    background-color: var(--color-graphite);
+    color: var(--color-bg);
+  }
+}
+
+@keyframes rv-panel-in {
+  from { opacity: 0; transform: translateY(1rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rv-stroke {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes rv-glow {
+  0%   { transform: translate(-25%, -25%) scale(0);   opacity: 0; }
+  40%  { transform: translate(-25%, -25%) scale(1);   opacity: 1; }
+  100% { transform: translate(-25%, -25%) scale(2.2); opacity: 0; }
+}
+
+@keyframes rv-rise {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .success,
+  .successGlow,
+  .successCheckCircle,
+  .successCheckMark,
+  .successEyebrow,
+  .successTitle,
+  .successText,
+  .successReset {
+    animation: none;
+  }
+  .successCheckCircle,
+  .successCheckMark { stroke-dashoffset: 0; }
+  .successGlow { display: none; }
+}

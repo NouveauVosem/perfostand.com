@@ -6,7 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import ds from './database/typeorm/data-source';
-import { authRoutes, productRoutes, syncRoutes, filesRoutes } from './routes';
+import { authRoutes, productRoutes, syncRoutes, filesRoutes, reviewRoutes } from './routes';
 import { seedAdmin } from './scripts/seed-admin';
 
 const app = express();
@@ -14,7 +14,13 @@ const PORT = process.env.PORT || 8300;
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://admin.perfostand.com'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://admin.perfostand.com',
+      'https://perfostand.com',
+      'https://www.perfostand.com',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -31,6 +37,7 @@ app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
 app.use('/sync', syncRoutes);
 app.use('/files', filesRoutes);
+app.use('/reviews', reviewRoutes);
 
 ds.initialize()
   .then(async () => {

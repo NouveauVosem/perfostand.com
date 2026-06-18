@@ -12,6 +12,7 @@ export default function Layout() {
         <nav className="admin-nav">
           <NavLink to="/products">Продукты</NavLink>
           <NavLink to="/sync">Синхронизация</NavLink>
+          <NavLink to="/reviews">Отзывы</NavLink>
         </nav>
         <div className="admin-user">
           <span>{user?.email}</span>

@@ -11,6 +11,7 @@ import { ProductCompat } from './entity/Products/ProductCompat.entity';
 import { SpecKey } from './entity/Products/SpecKey.entity';
 import { SpecificationValue } from './entity/Products/SpecificationValue.entity';
 import { SpecEnumRich } from './entity/Products/SpecEnumRich.entity';
+import { Review } from './entity/Reviews/Review.entity';
 
 const dataSource = new DataSource({
   type: 'postgres',
@@ -31,6 +32,7 @@ const dataSource = new DataSource({
     SpecKey,
     SpecificationValue,
     SpecEnumRich,
+    Review,
   ],
   migrations: [],
   subscribers: [],

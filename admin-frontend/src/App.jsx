@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import ProductsList from './components/Products/ProductsList';
 import ProductDetail from './components/Products/ProductDetail';
 import SyncPage from './components/Sync/SyncPage';
+import ReviewsList from './components/Reviews/ReviewsList';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/products" element={<ProductsList />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/sync" element={<SyncPage />} />
+            <Route path="/reviews" element={<ReviewsList />} />
             <Route path="/" element={<Navigate to="/products" replace />} />
           </Route>
           <Route path="*" element={<Navigate to="/products" replace />} />
