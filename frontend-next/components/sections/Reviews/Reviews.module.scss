@@ -29,6 +29,21 @@
 // Form
 .form { }
 
+// Сброс дефолтных стилей fieldset — используем только для группового disabled.
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  transition: opacity 200ms ease;
+
+  &:disabled {
+    opacity: 0.6;
+    // На время отправки гасим любые клики/ввод по всей форме.
+    cursor: progress;
+  }
+}
+
 .fieldsGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -176,7 +191,37 @@
   transition: opacity 150ms ease;
 
   &:hover { opacity: 0.9; }
-  &:disabled { opacity: 0.5; cursor: default; }
+  &:disabled { opacity: 0.8; cursor: progress; }
+}
+
+// Спиннер внутри кнопки на время отправки
+.spinner {
+  display: inline-block;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-right: 0.6rem;
+  border: 2px solid color-mix(in oklab, var(--color-primary-fg) 35%, transparent);
+  border-top-color: var(--color-primary-fg);
+  border-radius: 50%;
+  animation: rv-spin 700ms linear infinite;
+}
+
+@keyframes rv-spin {
+  to { transform: rotate(360deg); }
+}
+
+// Подсказка под кнопкой во время отправки
+.sendingNote {
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 2px solid var(--color-primary);
+  background-color: color-mix(in oklab, var(--color-primary) 6%, var(--color-surface));
+  font-size: 0.85rem;
+  color: var(--color-graphite-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
 }
 
 .formError {

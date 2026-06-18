@@ -109,7 +109,8 @@ export default function Reviews() {
               </button>
             </div>
           ) : (
-          <form onSubmit={handleSubmit} className={styles.form} noValidate>
+          <form onSubmit={handleSubmit} className={styles.form} noValidate aria-busy={status === 'sending'}>
+            <fieldset className={styles.fieldset} disabled={status === 'sending'}>
             <div className={styles.fieldsGrid}>
               <div className={styles.fieldHalf}>
                 <label htmlFor="rv-name" className={`num-badge ${styles.label}`}>FULL NAME</label>
@@ -181,15 +182,29 @@ export default function Reviews() {
                 Your review will be published after moderation.
               </p>
               <button type="submit" className={styles.submit} disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending…' : 'Submit Review →'}
+                {status === 'sending' ? (
+                  <>
+                    <span className={styles.spinner} aria-hidden="true" />
+                    Sending…
+                  </>
+                ) : (
+                  'Submit Review →'
+                )}
               </button>
             </div>
+
+            {status === 'sending' && (
+              <p className={styles.sendingNote}>
+                Uploading your review{photos.length > 0 ? ` and ${photos.length} photo${photos.length > 1 ? 's' : ''}` : ''}. This can take a moment on a slow connection — please don&apos;t close this page.
+              </p>
+            )}
 
             {status === 'error' && (
               <p className={styles.formError}>
                 Something went wrong. Please try again later.
               </p>
             )}
+            </fieldset>
           </form>
           )}
         </div>
