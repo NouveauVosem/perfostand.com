@@ -22,6 +22,7 @@ function validate(data) {
 export default function Reviews() {
   const [errors, setErrors]   = useState({})
   const [photos, setPhotos]   = useState([])
+  const [photoNotice, setPhotoNotice] = useState('')
   const [status, setStatus]   = useState('idle') // idle | sending | sent | error
   const [photosCountSent, setPhotosCountSent] = useState(0)
   const fileRef = useRef(null)
@@ -29,17 +30,34 @@ export default function Reviews() {
   function handleFiles(e) {
     const incoming = Array.from(e.target.files || [])
     const accepted = []
+    let skippedType = 0
+    let skippedSize = 0
     for (const file of incoming) {
-      if (!file.type.startsWith('image/')) continue
-      if (file.size > MAX_SIZE) continue
+      if (!file.type.startsWith('image/')) { skippedType += 1; continue }
+      if (file.size > MAX_SIZE) { skippedSize += 1; continue }
       accepted.push(file)
     }
-    setPhotos((prev) => [...prev, ...accepted].slice(0, MAX_PHOTOS))
+
+    setPhotos((prev) => {
+      const free = MAX_PHOTOS - prev.length
+      const added = accepted.slice(0, Math.max(0, free))
+      const skippedLimit = accepted.length - added.length
+
+      const parts = []
+      if (added.length > 0) parts.push(`${prev.length + added.length} of ${MAX_PHOTOS} photos added`)
+      if (skippedLimit > 0) parts.push(`${skippedLimit} not added (max ${MAX_PHOTOS})`)
+      if (skippedType > 0)  parts.push(`${skippedType} skipped (not an image)`)
+      if (skippedSize > 0)  parts.push(`${skippedSize} skipped (over 10MB)`)
+      setPhotoNotice(parts.length > 1 || skippedLimit || skippedType || skippedSize ? parts.join(' · ') : '')
+
+      return [...prev, ...added]
+    })
     if (fileRef.current) fileRef.current.value = ''
   }
 
   function removePhoto(idx) {
     setPhotos((prev) => prev.filter((_, i) => i !== idx))
+    setPhotoNotice('')
   }
 
   async function handleSubmit(e) {
@@ -65,6 +83,7 @@ export default function Reviews() {
       setStatus('sent')
       form.reset()
       setPhotos([])
+      setPhotoNotice('')
     } catch {
       setStatus('error')
     }
@@ -155,6 +174,12 @@ export default function Reviews() {
                 <label htmlFor="rv-photos" className={styles.fileButton}>
                   + Add photos
                 </label>
+
+                {photoNotice && (
+                  <p className={styles.photoNotice} role="status" aria-live="polite">
+                    {photoNotice}
+                  </p>
+                )}
 
                 {photos.length > 0 && (
                   <ul className={styles.thumbs}>
